@@ -1,0 +1,162 @@
+#include <iostream>
+#include <conio.h>
+#include <functional>
+
+using namespace std;
+typedef unsigned int uint;
+
+template <typename T, T NOTHING = 0>
+class List {
+
+	struct Node;
+	Node* first;
+	Node* last;
+	typedef function<int(T, T)> Comp;
+	Comp compare;
+	uint nElem;
+public:
+	List() : first(nullptr), nElem(0), compare([](T a, T b) {return a - b; }) {}
+	List(Comp compare) : first(nullptr),nElem(0), compare(compare) {}
+	~List();
+
+	uint NumberElements();
+	void addFirst(T elem);
+	void add(T elem, uint pos);
+        void addLast(T elem);
+        void modifyFirst(T elem);
+	void modify(T elem, uint pos);
+        void modifyLast(T elem);
+        void removeFirst();
+	void remove(uint pos);
+        void removeLast();
+        T getFirst();
+	T get(uint pos);
+	T getLast();
+	T find(T elem);
+};
+
+
+
+
+template <typename T, T NOTHING>
+struct List<T, NOTHING>::Node {
+	T       elem;
+	Node*   next;
+	Node*   prev;
+	Node(T elem = NOTHING, Node* next = nullptr) : elem(elem), next(next) {}
+};
+
+
+template <typename T, T NOTHING>
+List<T, NOTHING>::~List() {
+	Node* aux = fist;
+	Node* aux2 = last;
+	while (aux != nullptr) {
+		aux = first;
+		first = first->next;
+		delete aux;
+	}
+	while (aux2 != nullptr)
+	{
+		aux2 = last;
+		last = last->prev;
+		delete aux2;
+	}
+}
+
+
+
+template <typename T, T NOTHING>
+uint List<T, NOTHING>::NumberElements() {
+	return nElem;
+}
+
+template <typename T, T NOTHING>
+void List<T, NOTHING>::addFirst(T elem) {
+	Node* nuevo = new Node(elem, first);
+	if (nuevo != nullptr) {
+		first = nuevo;
+		nElem++;
+	}
+}
+
+
+template <typename T, T NOTHING>
+void List<T, NOTHING>::add(T elem, uint pos) {
+	if (pos > nElem) return;
+	if (pos == 0) {
+		addFirst(elem);
+	}
+	else {
+		Node* aux = first;
+		for (int i = 1; i < pos; i++) {
+			aux = aux->next;
+		}
+		Node* nuevo = new Node(elem, aux->next);
+		if (nuevo != nullptr) {
+			aux->next = nuevo;
+			nElem++;
+		}
+	}
+}
+
+template <typename T, T NOTHING>
+T List<T, NOTHING>::get(uint pos) {
+	if (pos >= 0 && pos < nElem) {
+		Node* aux = first;
+		for (int i = 0; i < pos; i++) {
+			aux = aux->next;
+		}
+		return aux->elem;
+	}
+	else {
+		return NOTHING;
+	}
+}
+
+
+template <typename T, T NOTHING>
+T List<T, NOTHING>::getLast() {
+	return get(nElem - 1);
+}
+
+
+template <typename T, T NOTHING>
+T List<T, NOTHING>::find(T elem) {
+	Node* aux = first;
+	while (aux != nullptr) {
+		if (compare(aux->elem, elem) == 0) {
+			return aux->elem;
+		}
+		aux = aux->next;
+	}
+	return NOTHING;
+}
+
+
+int main()
+{
+	List<int>* lst = new List<int>;
+	lst->addFirst(100);
+	lst->addFirst(110);
+	lst->add(50, 2);
+	lst->add(60, 1);
+	lst->add(10, 3);
+	lst->add(40, 4);
+	lst->add(90, 0);
+	lst->addFirst(800);
+	lst->addFirst(900);
+	cout << "********************************" << endl;
+	for (int i = 0; i < lst->NumberElements(); i++)
+	{
+		cout << lst->get(i) << endl;
+	}
+
+	cout << "---------------------------" << endl;
+	cout << "Obtener el Final: " << lst->getLast() << endl;
+	cout << "Buscar el elemento 60: " << lst->find(60) << endl;
+	cout << "Obtener el elemento 70: " << lst->find(70) << endl;
+	_getch();
+	return 0;
+
+}
