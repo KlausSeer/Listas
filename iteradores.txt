@@ -1,0 +1,89 @@
+#include <iostream>
+using namespace std;
+
+template <typename T>
+class Node {
+	T elem;
+	Node* next;
+public:
+	T getElem() {
+		return this->elem;
+	}
+	void setElem(T _elem) {
+		this->elem = _elem;
+	}
+	Node* getNext() {
+		return this->next;
+	}
+	void setNext(Node* _next) {
+		this->next = _next;
+	}
+	Node(T _elem, Node* _first) {
+		this->elem = _elem;
+	}
+};
+
+template <typename T>
+class Iterator {
+	unsigned int    pos;
+	Node<T>*           aux;
+public:
+	Iterator(unsigned int pos, Node<T>* aux) : pos(pos), aux(aux) {}
+	void operator ++() { pos++; aux = aux->next; }
+	bool operator !=(Iterator x) { return pos != x.pos; }
+	T    operator  *() { return aux->elem; }
+};
+
+template <typename T>
+class List {
+	unsigned int nElem;
+	Node<T>* first;
+public:
+	List() {
+		this->first = nullptr;
+	}
+	void insertFirst(T _elem) {
+		T auxElem = this->first->getElem();
+		if (!this->first && this->first->getNext() != this->first) {
+			Node<T>* aux = new Node<T>(_elem, this->first->getNext());
+			first->setNext(aux);
+			this->first->setElem(aux->getElem());
+			aux->setElem(auxElem);
+		}
+		else this->addLast(_elem);
+	}
+	void addLast(T _elem) {
+		if (!first) {
+			this->first = new Node<T>(_elem, NULL);
+			this->first->setNext(this->first);
+		}
+		else {
+			Node* aux = new Node<T>(_elem, first);
+			Node* auxTemp = first;
+			for (short i = 1; i < nElem; i++)
+				auxTemp = auxTemp.getNext();
+			auxTemp.setNext(aux);
+		}
+		nElem++;
+	}
+	void modifyFirst(T _elem) {
+		if (!first)
+			this->first->setElem(_elem);
+	}
+
+	Iterator<int> begin() {
+		return Iterator(0, first);
+	}
+	Iterator<int> end() {
+		return Iterator(nElem, first);
+	}
+	unsigned int getNElem() { return this->nElem; }
+};
+
+
+
+
+void main() {
+	List<int> lista;
+	system("pause");
+}
