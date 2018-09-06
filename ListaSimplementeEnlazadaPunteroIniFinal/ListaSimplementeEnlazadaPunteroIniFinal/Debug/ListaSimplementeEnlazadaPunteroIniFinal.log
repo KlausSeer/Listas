@@ -1,0 +1,22 @@
+﻿  List.cpp
+List.cpp(18): warning C4018: '<': signed/unsigned mismatch
+e:\carlos\listasimplementeenlazadapunteroinifinal\listasimplementeenlazadapunteroinifinal\list.h(102): warning C4018: '<': signed/unsigned mismatch
+  e:\carlos\listasimplementeenlazadapunteroinifinal\listasimplementeenlazadapunteroinifinal\list.h(99): note: while compiling class template member function 'int List<int,0>::obtainedPos(uint)'
+  List.cpp(19): note: see reference to function template instantiation 'int List<int,0>::obtainedPos(uint)' being compiled
+  List.cpp(8): note: see reference to class template instantiation 'List<int,0>' being compiled
+e:\carlos\listasimplementeenlazadapunteroinifinal\listasimplementeenlazadapunteroinifinal\list.h(91): warning C4018: '<': signed/unsigned mismatch
+  e:\carlos\listasimplementeenlazadapunteroinifinal\listasimplementeenlazadapunteroinifinal\list.h(88): note: while compiling class template member function 'void List<int,0>::modifyPos(T,uint)'
+          with
+          [
+              T=int
+          ]
+  e:\carlos\listasimplementeenlazadapunteroinifinal\listasimplementeenlazadapunteroinifinal\list.h(74): note: see reference to function template instantiation 'void List<int,0>::modifyPos(T,uint)' being compiled
+          with
+          [
+              T=int
+          ]
+  e:\carlos\listasimplementeenlazadapunteroinifinal\listasimplementeenlazadapunteroinifinal\list.h(54): note: while compiling class template member function 'uint List<int,0>::longitud(void)'
+  List.cpp(18): note: see reference to function template instantiation 'uint List<int,0>::longitud(void)' being compiled
+  List.obj : /DEBUG:FASTLINK is not supported when managed code is present; restarting link with /DEBUG:FULL
+  ListaSimplementeEnlazadaPunteroIniFinal.vcxproj -> E:\carlos\ListaSimplementeEnlazadaPunteroIniFinal\Debug\ListaSimplementeEnlazadaPunteroIniFinal.exe
+  ListaSimplementeEnlazadaPunteroIniFinal.vcxproj -> E:\carlos\ListaSimplementeEnlazadaPunteroIniFinal\Debug\ListaSimplementeEnlazadaPunteroIniFinal.pdb (Partial PDB)
