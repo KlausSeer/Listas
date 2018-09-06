@@ -1,0 +1,9 @@
+﻿  Source.cpp
+c:\users\klaus\documents\visual studio 2015\projects\listadobleenlazadaptrinicioyfinal\listadobleenlazadaptrinicioyfinal\List.h(94): warning C4018: '<': no coinciden signed/unsigned
+  c:\users\klaus\documents\visual studio 2015\projects\listadobleenlazadaptrinicioyfinal\listadobleenlazadaptrinicioyfinal\List.h(91): note: durante la compilación de la función miembro de plantilla de clase 'int List<int,0>::get(int)'
+  Source.cpp(18): note: vea la referencia a la creación de instancias de plantilla de función 'int List<int,0>::get(int)' que se está compilando
+  Source.cpp(6): note: vea la referencia a la creación de instancias de plantilla de clase 'List<int,0>' que se está compilando
+  .NETFramework,Version=v4.5.2.AssemblyAttributes.cpp
+  Source.obj : /DEBUG:FASTLINK no se admite cuando hay presente código administrado; reiniciando vínculo con /DEBUG:FULL
+  ListaDobleEnlazadaPtrInicioYFinal.vcxproj -> c:\users\klaus\documents\visual studio 2015\Projects\ListaDobleEnlazadaPtrInicioYFinal\Debug\ListaDobleEnlazadaPtrInicioYFinal.exe
+  ListaDobleEnlazadaPtrInicioYFinal.vcxproj -> c:\users\klaus\documents\visual studio 2015\Projects\ListaDobleEnlazadaPtrInicioYFinal\Debug\ListaDobleEnlazadaPtrInicioYFinal.pdb (Partial PDB)
